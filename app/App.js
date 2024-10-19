@@ -14,32 +14,54 @@ import MatchScreen from './screens/bottom_tabs/match/MatchScreen.js'
 
 
 
-//const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+const TabNavigator = () =>{
+  return(
+    <NavigationContainer>
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="Profile" component={ProfileScreen}/> 
+      <BottomTab.Screen name="Match" component={MatchScreen}/> 
+    </BottomTab.Navigator>
+  </NavigationContainer>
 
-export default function App() {
-  return (
-    <>
+  )
+}
 
+const DrawerNavigator = () =>{
+  return(
     <NavigationContainer>
     <Drawer.Navigator>
       <Drawer.Screen name="Account" component={AccountScreen}/>
       <Drawer.Screen name="About" component={AboutScreen}/>
     </Drawer.Navigator>
-
     </NavigationContainer>
 
+  )
+}
+
+//Test 
+const StackNavigator = () => {
+  return(
     <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Account" component={AccountScreen}/>
+      <Stack.Screen name="About" component={AboutScreen}/>
 
-      <BottomTab.Navigator>
-        <BottomTab.Screen name="Profile" component={ProfileScreen}/> 
-        <BottomTab.Screen name="Match" component={MatchScreen}/> 
-      </BottomTab.Navigator>
-
+    </Stack.Navigator>
     </NavigationContainer>
-    </>
+
+
+  )
+}
+
+
+export default function App() {
+  return (
+    
+    <StackNavigator/>
     
   );
 }

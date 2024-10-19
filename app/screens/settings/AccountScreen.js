@@ -1,10 +1,14 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, Button} from 'react-native';
 
-const AccountScreen = () =>{
+const AccountScreen = ({navigation}) =>{
     return(
         <View>
             <Text> Account Screen</Text>
+            <Button
+            title="Go to About"
+            onPress={() => navigation.navigate('About')}
+        />
 
         </View>
     )
