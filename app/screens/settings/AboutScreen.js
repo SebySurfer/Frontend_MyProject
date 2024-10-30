@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Button} from 'react-native';
 
+
 const AboutScreen = ({navigation}) =>{
     return(
         <View>
@@ -9,6 +10,7 @@ const AboutScreen = ({navigation}) =>{
             title="Go Back"
             onPress={() => navigation.goBack()}
         />
+
 
         </View>
     )

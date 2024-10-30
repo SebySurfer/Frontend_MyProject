@@ -11,8 +11,9 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import AboutScreen from './screens/settings/AboutScreen.js';
 import AccountScreen from './screens/settings/AccountScreen.js';
-import ProfileScreen from './screens/bottom_tabs/profile/ProfileScreen.js'
-import MatchScreen from './screens/bottom_tabs/match/MatchScreen.js'
+import ProfileScreen from './screens/bottom_tabs/ProfileScreen.js'
+import MatchScreen from './screens/bottom_tabs/MatchScreen.js'
+import CustomDrawerContent from './screens/settings/CustomDrawerContent.js';
 
 
 
@@ -59,12 +60,17 @@ const StackNavigator = () => {
   )
 }
 
+/*
+
+
+ */
 
 export default function App() {
   return (
     <>
-    <TabNavigator/>
     <DrawerNavigator/>
+    
+
     </>
     
     
