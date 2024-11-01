@@ -1,5 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+//use Linking
+//createMaterialTopNavvigator
 
 import { NavigationContainer } from '@react-navigation/native'; 
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,37 +11,69 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import AboutScreen from './screens/settings/AboutScreen.js';
 import AccountScreen from './screens/settings/AccountScreen.js';
-import ProfileScreen from './screens/bottom_tabs/profile/ProfileScreen.js'
-import MatchScreen from './screens/bottom_tabs/match/MatchScreen.js'
+import ProfileScreen from './screens/bottom_tabs/ProfileScreen.js'
+import MatchScreen from './screens/bottom_tabs/MatchScreen.js'
+import CustomDrawerContent from './screens/settings/CustomDrawerContent.js';
 
 
 
-//const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 
+const TabNavigator = () =>{
+  return(
+    <NavigationContainer>
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="Profile" component={ProfileScreen}/> 
+      <BottomTab.Screen name="Match" component={MatchScreen}/> 
+    </BottomTab.Navigator>
+  </NavigationContainer>
 
-export default function App() {
-  return (
-    <>
+  )
+}
 
+const DrawerNavigator = () =>{
+  return(
     <NavigationContainer>
     <Drawer.Navigator>
       <Drawer.Screen name="Account" component={AccountScreen}/>
       <Drawer.Screen name="About" component={AboutScreen}/>
     </Drawer.Navigator>
-
     </NavigationContainer>
 
+  )
+}
+
+//Test 
+const StackNavigator = () => {
+  return(
     <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen name="Account" component={AccountScreen}/>
+      <Stack.Screen name="About" component={AboutScreen}/>
 
-      <BottomTab.Navigator>
-        <BottomTab.Screen name="Profile" component={ProfileScreen}/> 
-        <BottomTab.Screen name="Match" component={MatchScreen}/> 
-      </BottomTab.Navigator>
-
+    </Stack.Navigator>
     </NavigationContainer>
+
+
+  )
+}
+
+/*
+
+
+ */
+
+export default function App() {
+  return (
+    <>
+    <DrawerNavigator/>
+    
+
     </>
+    
+    
     
   );
 }
