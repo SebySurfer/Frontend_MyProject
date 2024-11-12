@@ -7,7 +7,7 @@ export default function SignUpScreen({navigation}) {
         source={require('../../assets/Background.png')}
         style= {styles.ImageStyle}
     >
-    <View style={styles.logoContainer}>
+    <View style={styles.LogoContainer}>
         <Image source={require('../../assets/dating-site-icon.png')} style={styles.Icon}></Image>
         <Text> Proyecto de la Amistad </Text>
     </View>
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     ImageStyle:{
         
         flex: 1,
-        justifyContent: 'flex-end',
+        justifyContent: 'space-around',
         alignItems: 'center'
         
     },
@@ -39,13 +39,14 @@ const styles = StyleSheet.create({
 
     }, 
     LogoContainer:{
-        position: 'absolute', 
+        position: 'relative', 
         alignItems: 'center'
 
     }, 
     Icon:{
         height: 100, 
         width: 100
+        
     }
 
 
