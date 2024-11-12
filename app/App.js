@@ -2,14 +2,28 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
 import SessionNavigator from './navigation/SessionNavigator.js';
+import RegistrationNavigator from './navigation/RegistrationNavigator.js';
+
+import React, { useState } from 'react';
+
 
 
 export default function App() {
-  return (
+    const [registered, setRegistered] = useState(false);
 
-    <SessionNavigator/>
+    if(registered){
+      return (
+        <SessionNavigator/>
+      );
+
+    } else {
+      return (
+        <RegistrationNavigator/>
+      );
+      
+    }
+
   
-  );
 }
 
 const styles = StyleSheet.create({
