@@ -9,6 +9,10 @@ export default function ModalPicker() {
         setIsModalVisible(bool)
     }
 
+    const setData = (option) =>{
+        setChooseData(option)
+    }
+
   return (
     <SafeAreaView style={styles.Container}>
         <TouchableOpacity
@@ -27,6 +31,7 @@ export default function ModalPicker() {
         
         <Picker
         changeModalVis={changeModalVis}
+        setData={setData}
         
         />
 
@@ -37,12 +42,33 @@ export default function ModalPicker() {
   )
 }
 
-const Options = ['Male', 'Female']
+const OPTIONS = ['Male', 'Female']
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
 
+
 const Picker = (props) =>{
+    const onPressItem = (option) => {
+        props.changeModalVis(false);
+        props.setData(option)
+
+    }
+
+    const option = OPTIONS.map((item, index) => {
+        return(
+            <TouchableOpacity
+                style={styles.Option}
+                key={index}
+                onPress={() => onPressItem(item)}
+            >
+                <Text style={styles.TextOptions}>
+                    {item}
+
+                </Text>
+            </TouchableOpacity>
+        )
+    })
     return(
         <TouchableOpacity
             onPress={() => { props.changeModalVis(false)}}
@@ -50,7 +76,10 @@ const Picker = (props) =>{
         >
 
             <View style={[styles.Modal, {width: WIDTH - 20, height: HEIGHT/2}]}>
+            <ScrollView>
+                {option}
 
+            </ScrollView>
             </View>
 
 
@@ -78,7 +107,8 @@ const styles = StyleSheet.create({
     TouchableOpacity:{
         backgroundColor: 'purple', 
         alignSelf: 'stretch', 
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        marginHorizontal: 20
     }, 
     Picker:{
         flex: 1, 
@@ -88,6 +118,15 @@ const styles = StyleSheet.create({
     Modal:{
         backgroundColor:'cyan', 
         borderRadius: 10
+    }, 
+    Option:{
+        alignItems: 'flex-start'
+    }, 
+    TextOptions:{
+        margin: 20, 
+        fontSize: 20, 
+        fontWeight: 'bold'
     }
+    
 
 })
