@@ -24,7 +24,7 @@ export default function ModalPicker() {
 
         <Modal
         transparent={true}
-        animationType='True'
+        animationType='none'
         visible={isModalVisible}
         onRequestClose={() => changeModalVis(false)}
         >
