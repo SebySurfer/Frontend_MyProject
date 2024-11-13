@@ -1,8 +1,17 @@
 import { StyleSheet, Text, View, Modal, TouchableOpacity, SafeAreaView, Dimensions, ScrollView, Touchable} from 'react-native'
 import React, { useState } from 'react'
 
-export default function ModalPicker() {
-    const [chooseData, setChooseData] = useState('Select')
+/*
+Input an array 
+Input default value
+
+*/
+
+
+
+
+export default function ModalPicker({defaultValue}) {
+    const [chooseData, setChooseData] = useState(defaultValue || 'Select')
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     const changeModalVis = (bool) => {
@@ -27,12 +36,13 @@ export default function ModalPicker() {
         animationType='none'
         visible={isModalVisible}
         onRequestClose={() => changeModalVis(false)}
+        
         >
         
         <Picker
         changeModalVis={changeModalVis}
         setData={setData}
-        
+        options={OPTIONS}
         />
 
 
@@ -55,7 +65,7 @@ const Picker = (props) =>{
 
     }
 
-    const option = OPTIONS.map((item, index) => {
+    const option = props.options.map((item, index) => {
         return(
             <TouchableOpacity
                 style={styles.Option}
