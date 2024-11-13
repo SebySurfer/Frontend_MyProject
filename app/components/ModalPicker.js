@@ -75,7 +75,7 @@ const Picker = (props) =>{
             style={styles.Picker}
         >
 
-            <View style={[styles.Modal, {width: WIDTH - 20, height: HEIGHT/2}]}>
+            <View style={[styles.Modal, {width: WIDTH - 100, height: HEIGHT/6}]}>
             <ScrollView>
                 {option}
 
@@ -108,7 +108,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'purple', 
         alignSelf: 'stretch', 
         paddingHorizontal: 20,
-        marginHorizontal: 20
+        marginHorizontal: 30, 
+        borderRadius: 15
     }, 
     Picker:{
         flex: 1, 
@@ -117,7 +118,7 @@ const styles = StyleSheet.create({
     }, 
     Modal:{
         backgroundColor:'cyan', 
-        borderRadius: 10
+        borderRadius: 15
     }, 
     Option:{
         alignItems: 'flex-start'
