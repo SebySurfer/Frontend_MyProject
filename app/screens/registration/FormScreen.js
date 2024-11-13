@@ -8,7 +8,7 @@ export default function FormScreen() {
   let headerHeight = useHeaderHeight();
 
   return (
-    <View style={[styles.Container, {paddingTop: headerHeight}]}>
+    <View style={[styles.Container, {paddingTop: headerHeight + 50}]}>
       <CustomTextInput title='First Name'/>
       <CustomTextInput title='Last Name'/>
 
@@ -37,8 +37,12 @@ const styles = StyleSheet.create({
   
     Container:{
         flex: 1,
-        justifyContent: 'flex-start',
         alignItems: 'center',
+        flexDirection: 'column', 
+        gap: 35
+        
+      
+
 
       }, 
         input: {
