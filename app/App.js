@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import SessionNavigator from './navigation/SessionNavigator.js';
 import RegistrationNavigator from './navigation/RegistrationNavigator.js';
+import ModalPicker from './components/ModalPicker.js';
 
 import React, { useState } from 'react';
 
@@ -18,7 +19,7 @@ export default function App() {
 
     } else {
       return (
-        <RegistrationNavigator/>
+        <ModalPicker/>
       );
       
     }
