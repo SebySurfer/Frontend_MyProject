@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     Modal: {
-        backgroundColor: 'cyan',
+        backgroundColor: '#a085cc',
         borderRadius: 15,
         maxHeight: '30%', // Decrease maxHeight for better spacing
         width: '80%', // Adjust width to be responsive
