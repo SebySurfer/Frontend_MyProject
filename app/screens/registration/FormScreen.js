@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native'
 import * as React from 'react'
 import { TextInput } from 'react-native-paper';
 import {useHeaderHeight} from '@react-navigation/elements'
@@ -14,6 +14,10 @@ export default function FormScreen() {
 
 
   return (
+    <ImageBackground
+      source={require('../../assets/backgrounds/White.jpg')}
+      style={styles.ImageStyle}
+    >
     <View style={[styles.Container, {paddingTop: headerHeight + 50}]}>
       <CustomTextInput title='First Name'/>
       <CustomTextInput title='Last Name'/>
@@ -31,7 +35,12 @@ export default function FormScreen() {
       <CustomTextInput title='Phone Number'/>
       <CustomTextInput title='Instagram'/>
 
+      <Button
+        title="Sing Up"
+      />
+
     </View>
+    </ImageBackground>
   )
 }
 
@@ -61,13 +70,13 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         flexDirection: 'column', 
         gap: 35
-        
-      
-
-
       }, 
         input: {
           width: 300, // Set a fixed width for the input box
           maxWidth: '90%', // Ensure it doesn't stretch too much on wider screens
+    }, ImageStyle:{
+      flex: 1,
+      justifyContent: 'space-around',
+      alignItems: 'center'
     }
 })

@@ -4,7 +4,7 @@ import React from 'react'
 export default function SignUpScreen({navigation}) {
   return (
     <ImageBackground
-        source={require('../../assets/Background.png')}
+        source={require('../../assets/backgrounds/Background.png')}
         style= {styles.ImageStyle}
     >
     <View style={styles.LogoContainer}>
@@ -12,11 +12,9 @@ export default function SignUpScreen({navigation}) {
         <Text> Proyecto de la Amistad </Text>
     </View>
 
-    <View style={styles.Button}>
     <Button  
     title='Lets Get Started'
     onPress={ () => navigation.navigate('Forms')}/>
-    </View>
     </ImageBackground>
 
 
