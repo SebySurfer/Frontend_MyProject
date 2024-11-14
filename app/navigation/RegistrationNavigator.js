@@ -16,8 +16,22 @@ export default function RegistrationNavigator() {
     <NavigationContainer>
       <Stack.Navigator>
 
-        <Stack.Screen name='Sign Up' component={SignUpScreen} options={{ headerShown: false }}/>
-        <Stack.Screen name='Forms' component={FormScreen} options={{ headerShown: false }}/>
+        <Stack.Screen 
+        name='Sign Up' 
+        component={SignUpScreen} 
+        options={{ headerShown: false }}/>
+
+        <Stack.Screen 
+        name='Forms' 
+        component={FormScreen} 
+        options={{ 
+          headerTitle:'',
+          headerBlurEffect: 'regular', 
+          headerTransparent: true,
+          
+
+
+          }}/>
 
       </Stack.Navigator>
     </NavigationContainer>
