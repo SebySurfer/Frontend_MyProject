@@ -20,9 +20,13 @@ export default function ModalPicker(props) {
 
     return (
         <SafeAreaView style={styles.Container}>
-            <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
-                <Text style={styles.Text}> {chooseData} </Text>
-            </TouchableOpacity>
+            {/* Title and Picker Component Inline */}
+            <View style={styles.InlineContainer}>
+                <Text style={styles.TitleText}>{props.title}</Text>
+                <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
+                    <Text style={styles.Text}> {chooseData} </Text>
+                </TouchableOpacity>
+            </View>
 
             <Modal
                 transparent={true}
@@ -44,7 +48,6 @@ const Picker = (props) => {
     const flatListRef = useRef(null);
     const [data, setData] = useState([]);
     const ITEM_HEIGHT = 60;
-    const LOOP_OFFSET = props.options.length;
 
     useEffect(() => {
         setData([...props.options]);
@@ -61,27 +64,9 @@ const Picker = (props) => {
         </TouchableOpacity>
     );
 
-    const handleScrollEnd = (event) => {
-        const contentOffsetY = event.nativeEvent.contentOffset.y;
-        const currentIndex = Math.round(contentOffsetY / ITEM_HEIGHT);
-
-        // Scroll to the other end if the user scrolls past the start or end
-        if (currentIndex <= 0) {
-            flatListRef.current.scrollToOffset({
-                offset: ITEM_HEIGHT * (data.length - 1),
-                animated: false,
-            });
-        } else if (currentIndex >= data.length - 1) {
-            flatListRef.current.scrollToOffset({
-                offset: 0,
-                animated: false,
-            });
-        }
-    };
-
     return (
         <TouchableOpacity onPress={() => props.changeModalVis(false)} style={styles.Picker}>
-            <View style={[styles.Modal, { width: WIDTH - 100, maxHeight: HEIGHT / 4}]}>
+            <View style={[styles.Modal, { width: WIDTH - 100, maxHeight: HEIGHT / 4 }]}>
                 <FlatList
                     ref={flatListRef}
                     data={data}
@@ -89,10 +74,8 @@ const Picker = (props) => {
                     renderItem={renderItem}
                     getItemLayout={(data, index) => ({ length: ITEM_HEIGHT, offset: ITEM_HEIGHT * index, index })}
                     showsVerticalScrollIndicator={false}
-                    onMomentumScrollEnd={handleScrollEnd}
                     snapToInterval={ITEM_HEIGHT}
                     decelerationRate="fast"
-                    initialNumToRender={props.options.length}
                 />
             </View>
         </TouchableOpacity>
@@ -106,16 +89,27 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         padding: 20,
     },
+    InlineContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        width: '100%',
+        marginBottom: 10,
+    },
+    TitleText: {
+        fontSize: 18,
+        marginRight: 10,
+    },
     Text: {
         marginVertical: 20,
         fontSize: 25,
     },
     TouchableOpacity: {
         backgroundColor: 'purple',
-        alignSelf: 'stretch',
         paddingHorizontal: 20,
-        marginHorizontal: 30,
+        paddingVertical: 10,
         borderRadius: 15,
+        flex: 1,
     },
     Picker: {
         flex: 1,
@@ -137,3 +131,4 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+

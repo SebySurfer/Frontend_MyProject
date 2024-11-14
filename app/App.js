@@ -22,8 +22,11 @@ export default function App() {
     } else {
       return (
       
-        <ModalPicker options={OPTIONS}/>
-    
+        <ModalPicker
+        title="Choose Option:"
+        options={OPTIONS}
+        defaultValue="Select an Option"
+    />
         
         
       );
