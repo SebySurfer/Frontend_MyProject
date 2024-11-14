@@ -11,6 +11,8 @@ import React, { useState } from 'react';
 
 export default function App() {
     const [registered, setRegistered] = useState(false);
+    const OPTIONS = ['Male', 'Female', "Monkey"]
+
 
     if(registered){
       return (
@@ -19,7 +21,11 @@ export default function App() {
 
     } else {
       return (
-        <ModalPicker/>
+      
+        <ModalPicker options={OPTIONS}/>
+    
+        
+        
       );
       
     }

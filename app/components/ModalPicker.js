@@ -10,8 +10,8 @@ Input default value
 
 
 
-export default function ModalPicker({defaultValue}) {
-    const [chooseData, setChooseData] = useState(defaultValue || 'Select')
+export default function ModalPicker(props) {
+    const [chooseData, setChooseData] = useState(props.defaultValue || 'Select')
     const [isModalVisible, setIsModalVisible] = useState(false)
 
     const changeModalVis = (bool) => {
@@ -42,7 +42,7 @@ export default function ModalPicker({defaultValue}) {
         <Picker
         changeModalVis={changeModalVis}
         setData={setData}
-        options={OPTIONS}
+        options={props.options}
         />
 
 
@@ -52,7 +52,7 @@ export default function ModalPicker({defaultValue}) {
   )
 }
 
-const OPTIONS = ['Male', 'Female']
+// const OPTIONS = ['Male', 'Female'] Testing for array input
 const WIDTH = Dimensions.get('window').width;
 const HEIGHT = Dimensions.get('window').height;
 
@@ -85,7 +85,7 @@ const Picker = (props) =>{
             style={styles.Picker}
         >
 
-            <View style={[styles.Modal, {width: WIDTH - 100, height: HEIGHT/6}]}>
+            <View style={[styles.Modal, {width: WIDTH - 100, height: HEIGHT/4}]}>
             <ScrollView>
                 {option}
 
