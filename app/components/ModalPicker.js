@@ -99,10 +99,12 @@ const styles = StyleSheet.create({
     },
     Text: {
         marginVertical: 10,
-        fontSize: 20,
+        fontSize: 15,
+        color: '#ffffff', 
     },
     TouchableOpacity: {
         backgroundColor: 'purple',
+        
         paddingHorizontal: 10,
         borderRadius: 15,
         alignItems: 'center',
@@ -127,8 +129,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     TextOptions: {
-        fontSize: 20,
-        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#ffffff', 
     },
 });
 

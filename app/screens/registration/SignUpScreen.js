@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, ImageBackground, Image, Button} from 'react-native'
 import React from 'react'
+import CustomButton from '../../components/CustomButton'
 
 export default function SignUpScreen({navigation}) {
   return (
@@ -12,7 +13,7 @@ export default function SignUpScreen({navigation}) {
         <Text> Proyecto de la Amistad </Text>
     </View>
 
-    <Button  
+    <CustomButton  
     title='Lets Get Started'
     onPress={ () => navigation.navigate('Forms')}/>
     </ImageBackground>

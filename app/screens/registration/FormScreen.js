@@ -3,9 +3,9 @@ import * as React from 'react'
 import { TextInput } from 'react-native-paper';
 import {useHeaderHeight} from '@react-navigation/elements'
 import ModalPicker from '../../components/ModalPicker.js';
+import CustomButton from '../../components/CustomButton.js';
 
-
-export default function FormScreen() {
+export default function FormScreen({navigation}) {
   let headerHeight = useHeaderHeight();
 
   const Gender = ["Male", "Female"];
@@ -15,7 +15,7 @@ export default function FormScreen() {
 
   return (
     <ImageBackground
-      source={require('../../assets/backgrounds/White.jpg')}
+      source={require('../../assets/backgrounds/White.jpeg')}
       style={styles.ImageStyle}
     >
     <View style={[styles.Container, {paddingTop: headerHeight + 50}]}>
@@ -35,9 +35,9 @@ export default function FormScreen() {
       <CustomTextInput title='Phone Number'/>
       <CustomTextInput title='Instagram'/>
 
-      <Button
-        title="Sing Up"
-      />
+      <CustomButton  
+        title='Sign Up'
+        onPress={ () => navigation.navigate('Home')}/>
 
     </View>
     </ImageBackground>
