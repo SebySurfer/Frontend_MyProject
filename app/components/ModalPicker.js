@@ -81,7 +81,7 @@ const Picker = (props) => {
 
     return (
         <TouchableOpacity onPress={() => props.changeModalVis(false)} style={styles.Picker}>
-            <View style={[styles.Modal, { width: WIDTH - 100, maxHeight: HEIGHT / 2 }]}>
+            <View style={[styles.Modal, { width: WIDTH - 100, maxHeight: HEIGHT / 4}]}>
                 <FlatList
                     ref={flatListRef}
                     data={data}
