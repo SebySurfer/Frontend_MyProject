@@ -7,6 +7,14 @@ import ModalPicker from './components/ModalPicker.js';
 
 import React, { useState } from 'react';
 
+/*
+<ModalPicker
+        title="Choose Option:"
+        options={OPTIONS}
+        defaultValue="Select an Option"
+    />
+
+*/
 
 
 export default function App() {
@@ -21,12 +29,8 @@ export default function App() {
 
     } else {
       return (
-      
-        <ModalPicker
-        title="Choose Option:"
-        options={OPTIONS}
-        defaultValue="Select an Option"
-    />
+        <RegistrationNavigator/>
+        
         
         
       );

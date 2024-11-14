@@ -81,35 +81,34 @@ const Picker = (props) => {
         </TouchableOpacity>
     );
 };
-
+//Note: if deleting margins or padding doesnt work, its the flex
 const styles = StyleSheet.create({
     Container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        padding: 20,
     },
     InlineContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'flex-start',
         width: '100%',
-        marginBottom: 10,
     },
     TitleText: {
         fontSize: 18,
         marginRight: 10,
     },
     Text: {
-        marginVertical: 20,
-        fontSize: 25,
+        marginVertical: 10,
+        fontSize: 20,
     },
     TouchableOpacity: {
         backgroundColor: 'purple',
-        paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingHorizontal: 10,
         borderRadius: 15,
-        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '50%', // Set a more reasonable width
+        maxWidth: 200, // Limit the maximum width
     },
     Picker: {
         flex: 1,
@@ -119,7 +118,8 @@ const styles = StyleSheet.create({
     Modal: {
         backgroundColor: 'cyan',
         borderRadius: 15,
-        maxHeight: '50%',
+        maxHeight: '30%', // Decrease maxHeight for better spacing
+        width: '80%', // Adjust width to be responsive
     },
     Option: {
         alignItems: 'center',

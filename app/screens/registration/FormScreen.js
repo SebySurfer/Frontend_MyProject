@@ -2,15 +2,34 @@ import { StyleSheet, Text, View, Button } from 'react-native'
 import * as React from 'react'
 import { TextInput } from 'react-native-paper';
 import {useHeaderHeight} from '@react-navigation/elements'
+import ModalPicker from '../../components/ModalPicker.js';
 
 
 export default function FormScreen() {
   let headerHeight = useHeaderHeight();
 
+  const Gender = ["Male", "Female"];
+  const InterestedGender = ["Male", "Female"]
+
+
+
   return (
     <View style={[styles.Container, {paddingTop: headerHeight + 50}]}>
       <CustomTextInput title='First Name'/>
       <CustomTextInput title='Last Name'/>
+
+      <ModalPicker
+        title="Gender:"
+        options={Gender}
+      />
+
+      <ModalPicker
+        title="Attracted to:"
+        options={InterestedGender}
+       />
+
+      <CustomTextInput title='Phone Number'/>
+      <CustomTextInput title='Instagram'/>
 
     </View>
   )
