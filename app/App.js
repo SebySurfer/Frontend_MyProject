@@ -11,7 +11,7 @@ import React, { useState } from 'react';
 
 export default function App() {
     const [registered, setRegistered] = useState(false);
-    const OPTIONS = ['Male', 'Female', "Monkey"]
+    const OPTIONS = ['Male', 'Female', "X", "Y", "Z", "F", "X", "Y", "Z", "F"]
 
 
     if(registered){

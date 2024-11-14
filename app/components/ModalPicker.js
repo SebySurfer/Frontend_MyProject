@@ -85,8 +85,10 @@ const Picker = (props) =>{
             style={styles.Picker}
         >
 
-            <View style={[styles.Modal, {width: WIDTH - 100, height: HEIGHT/4}]}>
-            <ScrollView>
+            <View style={[styles.Modal, { width: WIDTH - 100, maxHeight: HEIGHT / 2 }]}>
+
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+
                 {option}
 
             </ScrollView>
@@ -127,8 +129,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     }, 
     Modal:{
-        backgroundColor:'cyan', 
-        borderRadius: 15
+        backgroundColor: 'cyan',
+        borderRadius: 15,
+        maxHeight: '50%', 
     }, 
     Option:{
         alignItems: 'flex-start'
