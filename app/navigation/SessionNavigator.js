@@ -10,7 +10,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import FilterScreen from '../screens/session/tabs/FilterScreen';
 import MatchScreen from '../screens/session/tabs/MatchScreen';
 import AboutScreen from '../screens/session/menu/AboutScreen';
-import AccountScreen from '../screens/session/menu/AccountScreen';
+import LikeScreen from '../screens/session/tabs/LikeScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +22,9 @@ function TabNavigator(){
     return(
         <Tab.Navigator>
             <Tab.Screen name='Filters' component={FilterScreen}/>
-            <Tab.Screen name='Marbles' component={MatchScreen}/>
+            <Tab.Screen name='Profiles' component={MatchScreen}/>
+            <Tab.Screen name='Likes' component={LikeScreen}/>
+
         </Tab.Navigator>
 
     )
@@ -35,7 +37,6 @@ export default function SessionNavigator() {
 
          <Drawer.Navigator>
         <Drawer.Screen name='Home' component={TabNavigator}/>
-        <Drawer.Screen name='Account' component={AccountScreen}/>
         <Drawer.Screen name='About' component={AboutScreen}/>
         </Drawer.Navigator>
 

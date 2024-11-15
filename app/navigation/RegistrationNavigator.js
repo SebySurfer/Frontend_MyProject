@@ -4,6 +4,8 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native'; 
 
 import { createStackNavigator } from '@react-navigation/stack';
+import SignUpScreen from '../screens/registration/SignUpScreen.js';
+import FormScreen from '../screens/registration/FormScreen.js';
 
 
 const Stack = createStackNavigator();
@@ -11,9 +13,28 @@ const Stack = createStackNavigator();
 
 export default function RegistrationNavigator() {
   return (
-    <View>
-      <Text>RegistrationNavigator</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+
+        <Stack.Screen 
+        name='Sign Up' 
+        component={SignUpScreen} 
+        options={{ headerShown: false }}/>
+
+        <Stack.Screen 
+        name='Forms' 
+        component={FormScreen} 
+        options={{ 
+          headerTitle:'',
+          headerBlurEffect: 'regular', 
+          headerTransparent: true,
+          
+
+
+          }}/>
+
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
 
