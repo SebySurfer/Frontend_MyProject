@@ -1,10 +1,13 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import ColorList from '../../../components/ColorList.js'
 
 export default function FilterScreen() {
   return (
     <View>
-      <Text>FilterScreen</Text>
+     <ColorList color="#4f46e5"
+
+      />
     </View>
   )
 }
