@@ -24,12 +24,12 @@ export default function App() {
 
     if(registered){
       return (
-        <SessionNavigator/>
+        <RegistrationNavigator/>
       );
 
     } else {
       return (
-        <RegistrationNavigator/>
+        <SessionNavigator/>
         
         
         
