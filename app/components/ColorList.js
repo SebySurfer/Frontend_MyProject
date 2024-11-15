@@ -1,11 +1,15 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
+import {useHeaderHeight} from '@react-navigation/elements'
+
 
 
 export default function ColorList({color}) {
+let headerHeight = useHeaderHeight()
+
     return (
 <ScrollView
-    contentContainerStyle={styles.container}
+    contentContainerStyle={[styles.container, {paddingTop: headerHeight+30}]}
     >
     {
         [1, 0.8, 0.5].map(opacity => (
