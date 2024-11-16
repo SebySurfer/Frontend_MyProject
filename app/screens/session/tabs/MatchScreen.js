@@ -1,5 +1,6 @@
 import { StyleSheet, Text, View, ImageBackground } from 'react-native'
 import React from 'react'
+import Profile from '../../../components/Profile.js'
 
 export default function MatchScreen() {
   return (
@@ -7,7 +8,8 @@ export default function MatchScreen() {
       source={require('../../../assets/backgrounds/3.jpeg')}
       style={styles.ImageStyle} >
     <View>
-      <Text>MatchScreen</Text>
+
+      <Profile/>
     </View>
     </ImageBackground>
   )
