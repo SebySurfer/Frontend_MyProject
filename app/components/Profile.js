@@ -1,6 +1,5 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React, { useState } from 'react'
-import {useHeaderHeight} from '@react-navigation/elements'
 import CustomButton from './CustomButton.js';
 
 /*
@@ -8,7 +7,6 @@ Name="" Age={} MatchRate={} isMutual={}
 
 */
 export default function Profile(props) {
-    let headerHeight = useHeaderHeight();
 
     const DisplayButton = ({state}) =>{
         if(!state){
@@ -25,12 +23,11 @@ export default function Profile(props) {
     }
   return (
 
-    <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+10}]}>
 
     <View style={styles.Box}>
 
-        <Text>{props.Name}, {props.Age}</Text>
-        <Text>Match Rate: {props.MatchRate} </Text>
+        <Text style={styles.User}>{props.Name}, {props.Age}</Text>
+        <Text style={styles.Match}>{props.MatchRate}% Match </Text>
         <DisplayButton state={props.isMutual}/>
 
 
@@ -38,7 +35,6 @@ export default function Profile(props) {
     
 
     </View>
-    </ScrollView>
   )
 }
 
@@ -52,7 +48,7 @@ const styles = StyleSheet.create({
         marginBottom: 10, 
         paddingHorizontal: 30, 
         paddingVertical: 30, 
-        justifyContent: "space-between",
+        justifyContent: "space-evenly",
         backgroundColor:"salmon", 
         alignItems: 'center',
 
@@ -63,6 +59,18 @@ const styles = StyleSheet.create({
         flexDirection: 'column', 
         gap: 35, 
         justifyContent: 'space-evenly'    
+
+    }, 
+    User:{
+        fontSize: 30,
+        fontStyle:"italic", 
+        color: "#632458"
+        
+
+    }, 
+    Match:{
+        fontSize: 20, 
+        color: "white", 
 
     }
 })
