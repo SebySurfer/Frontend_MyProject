@@ -10,7 +10,11 @@ export default function MatchScreen() {
     <ImageBackground
       source={require('../../../assets/backgrounds/3.jpeg')}
       style={styles.ImageStyle} >
-    <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+10}]}>
+    <ScrollView  
+    contentContainerStyle={[styles.Container, {paddingTop: headerHeight+10}]}
+    showsVerticalScrollIndicator={false}
+
+    >
 
 
       <Profile Name="Aless" Age={21} MatchRate={33} isMutual={false}/>
