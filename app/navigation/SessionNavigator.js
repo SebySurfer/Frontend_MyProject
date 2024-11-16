@@ -55,7 +55,22 @@ export default function SessionNavigator() {
   return (
     <NavigationContainer>
 
-         <Drawer.Navigator>
+<Drawer.Navigator
+  screenOptions={{
+    drawerIcon: ({ focused, color, size }) => (
+      <View style={styles.iconContainer}>
+        <Ionicons
+          name="menu"
+          size={size}
+          color={focused ? '#bd8bf0' : '#183371'}
+        />
+      </View>
+    ),
+    drawerActiveTintColor: '#bd8bf0',
+    drawerInactiveTintColor: '#183371',
+  }}
+>
+
         <Drawer.Screen name='Home' component={TabNavigator} options={{ 
           headerTitle:'',
           headerBlurEffect: 'regular', 
@@ -75,3 +90,6 @@ export default function SessionNavigator() {
 
 
 
+const styles = StyleSheet.create({
+  
+});
