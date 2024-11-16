@@ -2,20 +2,33 @@ import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import ColorList from '../../../components/ColorList.js'
 import {useHeaderHeight} from '@react-navigation/elements'
-import { Title } from 'react-native-paper';
-
+import ModalPicker from '../../../components/ModalPicker.js'
 
 
 export default function FilterScreen() {
+  let Questions = ["Too often", "I do", "In between", "Not too much", "Not at all"]
+  let BooleanQ = ["Yes", "No"]
+
   let headerHeight = useHeaderHeight();
   return (
     <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+20}]}>
+     
      <View style={[styles.Boxes, {backgroundColor:"#552bc2"}]}>
       <Text style={styles.Title}>Core Values</Text>
+      <ModalPicker title="Drink" options={Questions} titleColor="white" />
+      <ModalPicker title="Smoke" options={Questions} titleColor="white" />
+      <ModalPicker title="Family-Oriented" options={Questions} titleColor="white" />
+      <ModalPicker title="Religious" options={Questions} titleColor="white" />
+
+      
+
     </View>
 
     <View style={[styles.Boxes, {backgroundColor:"#a998d6"}]}>
     <Text style={styles.Title}>Ways of Thinking</Text>
+    <ModalPicker title="Want kids" options={BooleanQ} titleColor="white" />
+    <ModalPicker title="Like outdoors" options={BooleanQ} titleColor="white" />
+   
 
     </View>
 
@@ -45,6 +58,7 @@ const styles = StyleSheet.create({
     marginBottom: 10, 
     paddingHorizontal: 30, 
     paddingVertical: 30, 
+    justifyContent: "space-between"
     }, 
     Title:{
       fontSize: 20,

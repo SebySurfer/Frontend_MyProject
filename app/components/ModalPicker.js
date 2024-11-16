@@ -6,6 +6,11 @@ Input an array
 Input default value
 */
 
+/*
+    title=""
+    options=[]
+ */
+
 export default function ModalPicker(props) {
     const [chooseData, setChooseData] = useState(props.defaultValue || 'Select');
     const [isModalVisible, setIsModalVisible] = useState(false);
@@ -18,12 +23,15 @@ export default function ModalPicker(props) {
         setChooseData(option);
     };
 
+    const titleColor = props.titleColor || '#000000';
+
+
     return (
         <SafeAreaView style={styles.Container}>
             {/* Title and Picker Component Inline */}
             <View style={styles.InlineContainer}>
-                <Text style={styles.TitleText}>{props.title}</Text>
-                <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
+            <Text style={[styles.TitleText, { color: titleColor }]}>{props.title}</Text>
+            <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
                     <Text style={styles.Text}> {chooseData} </Text>
                 </TouchableOpacity>
             </View>
