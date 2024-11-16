@@ -9,7 +9,7 @@ export default function MatchScreen() {
       style={styles.ImageStyle} >
     <View>
 
-      <Profile/>
+      <Profile Name="Aless" Age={21} MatchRate={"33%"} isMutual={true}/>
     </View>
     </ImageBackground>
   )

@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 import {useHeaderHeight} from '@react-navigation/elements'
 import CustomButton from './CustomButton.js';
 
+/*
+Name="" Age={} MatchRate={} isMutual={}
 
-export default function Profile() {
-    const [isMutual, setIsMutual] = useState(true);
+*/
+export default function Profile(props) {
     let headerHeight = useHeaderHeight();
 
-    const DisplayButton = (state) =>{
+    const DisplayButton = ({state}) =>{
         if(!state){
             return(
                 <CustomButton title="Give Like"/>
@@ -27,9 +29,9 @@ export default function Profile() {
 
     <View style={styles.Box}>
 
-        <Text>Name, Age</Text>
-        <Text>Match Rate: </Text>
-        <DisplayButton/>
+        <Text>{props.Name}, {props.Age}</Text>
+        <Text>Match Rate: {props.MatchRate} </Text>
+        <DisplayButton state={props.isMutual}/>
 
 
 
