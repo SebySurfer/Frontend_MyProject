@@ -1,7 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
 import React from 'react'
 
 import { NavigationContainer } from '@react-navigation/native'; 
+import { useNavigation } from '@react-navigation/native';
+
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -62,12 +64,15 @@ export default function SessionNavigator() {
         <Ionicons
           name="menu"
           size={size}
-          color={focused ? '#bd8bf0' : '#183371'}
+          color={focused ? '#8e40de' : '#183371'}
         />
       </View>
     ),
-    drawerActiveTintColor: '#bd8bf0',
+    drawerActiveTintColor: '#8e40de',
     drawerInactiveTintColor: '#183371',
+    headerLeft: () => <CustomDrawerButton />, // Use the custom button
+
+
   }}
 >
 
@@ -88,8 +93,32 @@ export default function SessionNavigator() {
   )
 }
 
+function CustomDrawerButton() {
+  const navigation = useNavigation();
+
+  return (
+    <TouchableOpacity
+      style={styles.menuButton}
+      onPress={() => navigation.toggleDrawer()}
+    >
+      <Ionicons name="menu" size={24} color="#183371" />
+    </TouchableOpacity>
+  );
+}
+
 
 
 const styles = StyleSheet.create({
+  menuButton: {
+    backgroundColor: '#ffffff', // White background
+    borderRadius: 12, // Rounded corners
+    padding: 8, // Space around the icon
+    marginLeft: 10, // Margin from the left edge
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 2,
+    elevation: 3, // Shadow effect for Android
+  },
   
 });
