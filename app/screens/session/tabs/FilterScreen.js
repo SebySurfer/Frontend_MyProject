@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView } from 'react-native'
+import { StyleSheet, Text, View, ScrollView, ImageBackground } from 'react-native'
 import React from 'react'
 import ColorList from '../../../components/ColorList.js'
 import {useHeaderHeight} from '@react-navigation/elements'
@@ -11,6 +11,10 @@ export default function FilterScreen() {
 
   let headerHeight = useHeaderHeight();
   return (
+    <ImageBackground
+source={require('../../../assets/backgrounds/1.jpeg')}
+style={styles.ImageStyle} >
+
     <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+20}]}>
      
      <View style={[styles.Boxes, {backgroundColor:"#552bc2"}]}>
@@ -32,11 +36,10 @@ export default function FilterScreen() {
 
     </View>
 
-   
-    
 
 
     </ScrollView>
+    </ImageBackground>
   )
 }
 
