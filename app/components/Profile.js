@@ -15,7 +15,11 @@ export default function Profile(props) {
             )
         } else {
             return(
+                <>
                 <CustomButton title="Get Instagram"/>
+                <Text style={styles.Notification}>You both liked each other! </Text>
+                </>
+                
             )
 
         }
@@ -72,5 +76,9 @@ const styles = StyleSheet.create({
         fontSize: 20, 
         color: "white", 
 
+    }, 
+    Notification:{
+        color:"blue", 
+        fontSize: 10
     }
 })
