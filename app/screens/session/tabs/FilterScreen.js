@@ -1,33 +1,55 @@
 import { StyleSheet, Text, View, ScrollView } from 'react-native'
 import React from 'react'
 import ColorList from '../../../components/ColorList.js'
+import {useHeaderHeight} from '@react-navigation/elements'
+import { Title } from 'react-native-paper';
+
 
 
 export default function FilterScreen() {
+  let headerHeight = useHeaderHeight();
   return (
-    <ScrollView  contentContainerStyle={styles.Container}>
-     <View style={[styles.Boxes, {backgroundColor:"blue"}]}/>
+    <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+20}]}>
+     <View style={[styles.Boxes, {backgroundColor:"#552bc2"}]}>
+      <Text style={styles.Title}>Core Values</Text>
+    </View>
+
+    <View style={[styles.Boxes, {backgroundColor:"#a998d6"}]}>
+    <Text style={styles.Title}>Ways of Thinking</Text>
+
+    </View>
+
+   
+    
+
+
     </ScrollView>
   )
 }
 
 const styles = StyleSheet.create({
   Container:{
-    flex: 1,
     alignItems: 'center',
     flexDirection: 'column', 
-    gap: 35
+    gap: 35, 
+    justifyContent: 'space-evenly'
+
+
   }, 
 
   Boxes:{
-    width:100, 
-    height: 150, 
-    borderRadius: 25, 
+    width:300, 
+    height: 300,
+    borderRadius: 18, 
     borderCurve: 'continuous', 
-    marginBottom: 15, 
-    paddingHorizontal: 20, 
-    paddingVertical: 10, 
-    height:'100%'
+    marginBottom: 10, 
+    paddingHorizontal: 30, 
+    paddingVertical: 30, 
+    }, 
+    Title:{
+      fontSize: 20,
+      color: 'white',
+    
     }
 
 })
