@@ -1,13 +1,43 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 
+import SessionNavigator from './navigation/SessionNavigator.js';
+import RegistrationNavigator from './navigation/RegistrationNavigator.js';
+import ModalPicker from './components/ModalPicker.js';
+
+import React, { useState } from 'react';
+
+/*
+<ModalPicker
+        title="Choose Option:"
+        options={OPTIONS}
+        defaultValue="Select an Option"
+    />
+
+*/
+
+
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Hello Word </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    const [registered, setRegistered] = useState(false);
+    const OPTIONS = ['Male', 'Female', "X", "Y", "T", "q", "3", "5", "8", "0", "ed", "2"]
+
+
+    if(registered){
+      return (
+        <RegistrationNavigator/>
+      );
+
+    } else {
+      return (
+        <SessionNavigator/>
+        
+        
+        
+      );
+      
+    }
+
+  
 }
 
 const styles = StyleSheet.create({
