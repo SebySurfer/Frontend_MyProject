@@ -4,7 +4,7 @@ import {useHeaderHeight} from '@react-navigation/elements'
 import CustomButton from '../../../components/CustomButton';
 
 
-export default function AboutScreen({navigation}) {
+export default function AccountScreen({navigation}) {
 
   let headerHeight = useHeaderHeight();
   return (
