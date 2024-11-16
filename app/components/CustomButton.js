@@ -22,6 +22,8 @@ const styles = StyleSheet.create({
         width: '50%', // Set a more reasonable width
         height:'6%',
         maxWidth: 200,
+        minWidth: 150,
+        minHeight: 50
 
     }, 
 
