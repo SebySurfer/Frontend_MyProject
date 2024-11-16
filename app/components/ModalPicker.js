@@ -9,6 +9,7 @@ Input default value
 /*
     title=""
     options=[]
+    titleColor=""
  */
 
 export default function ModalPicker(props) {
@@ -126,7 +127,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     Modal: {
-        backgroundColor: '#a085cc',
+        backgroundColor: '#1f9494',
         borderRadius: 15,
         maxHeight: '30%', // Decrease maxHeight for better spacing
         width: '80%', // Adjust width to be responsive
