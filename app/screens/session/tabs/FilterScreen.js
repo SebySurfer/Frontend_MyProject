@@ -15,7 +15,7 @@ export default function FilterScreen() {
 source={require('../../../assets/backgrounds/1.jpeg')}
 style={styles.ImageStyle} >
 
-    <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+20}]}>
+    <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+10}]}>
      
      <View style={[styles.Boxes, {backgroundColor:"#552bc2"}]}>
       <Text style={styles.Title}>Core Values</Text>

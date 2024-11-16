@@ -21,7 +21,7 @@ const Drawer = createDrawerNavigator();
 function TabNavigator(){
     return(
         <Tab.Navigator>
-            <Tab.Screen name='Filters' component={FilterScreen} options={{ headerShown: true, headerBlurEffect: 'regular',  }}/>
+            <Tab.Screen name='Filters' component={FilterScreen} options={{ headerShown: false, headerBlurEffect: 'regular',  }}/>
             <Tab.Screen name='Profiles' component={MatchScreen} options={{ headerShown: false }}/>
             <Tab.Screen name='Likes' component={LikeScreen} options={{ headerShown: false }}/>
 
