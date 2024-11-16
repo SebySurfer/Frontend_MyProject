@@ -9,7 +9,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 
 import FilterScreen from '../screens/session/tabs/FilterScreen';
 import MatchScreen from '../screens/session/tabs/MatchScreen';
-import AboutScreen from '../screens/session/menu/AboutScreen';
+import AccountScreen from '../screens/session/menu/AccountScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +39,7 @@ export default function SessionNavigator() {
           headerBlurEffect: 'regular', 
           headerTransparent: true,}}/>
 
-        <Drawer.Screen name='About' component={AboutScreen} options={{ 
+        <Drawer.Screen name='Account' component={AccountScreen} options={{ 
           headerBlurEffect: 'regular', 
           headerTransparent: true,
         
