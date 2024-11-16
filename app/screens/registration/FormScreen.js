@@ -72,8 +72,8 @@ const styles = StyleSheet.create({
         gap: 35
       }, 
         input: {
-          width: 300, // Set a fixed width for the input box
-          maxWidth: '90%', // Ensure it doesn't stretch too much on wider screens
+          width: 300,
+          maxWidth: '90%', 
     }, ImageStyle:{
       flex: 1,
       justifyContent: 'space-around',

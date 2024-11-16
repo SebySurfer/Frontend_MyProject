@@ -21,9 +21,9 @@ const Drawer = createDrawerNavigator();
 function TabNavigator(){
     return(
         <Tab.Navigator>
-            <Tab.Screen name='Filters' component={FilterScreen}/>
-            <Tab.Screen name='Profiles' component={MatchScreen}/>
-            <Tab.Screen name='Likes' component={LikeScreen}/>
+            <Tab.Screen name='Filters' component={FilterScreen} options={{ headerShown: false, headerBlurEffect: 'regular',  }}/>
+            <Tab.Screen name='Profiles' component={MatchScreen} options={{ headerShown: false }}/>
+            <Tab.Screen name='Likes' component={LikeScreen} options={{ headerShown: false }}/>
 
         </Tab.Navigator>
 
@@ -36,8 +36,16 @@ export default function SessionNavigator() {
     <NavigationContainer>
 
          <Drawer.Navigator>
-        <Drawer.Screen name='Home' component={TabNavigator}/>
-        <Drawer.Screen name='About' component={AboutScreen}/>
+        <Drawer.Screen name='Home' component={TabNavigator} options={{ 
+          headerTitle:'',
+          headerBlurEffect: 'regular', 
+          headerTransparent: true,}}/>
+
+        <Drawer.Screen name='About' component={AboutScreen} options={{ 
+          headerBlurEffect: 'regular', 
+          headerTransparent: true,
+        
+          }}/>
         </Drawer.Navigator>
 
     </NavigationContainer>
