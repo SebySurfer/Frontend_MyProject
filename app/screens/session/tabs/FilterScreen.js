@@ -67,6 +67,13 @@ const styles = StyleSheet.create({
       fontSize: 20,
       color: 'white',
     
-    }
+    }, 
+    ImageStyle:{
+        
+      flex: 1,
+      justifyContent: 'space-around',
+      alignItems: 'center'
+      
+  },
 
 })
