@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Alert } from 'react-native';
 import axios from 'axios';
 import { TextInput } from 'react-native-paper';
@@ -6,8 +6,12 @@ import { useHeaderHeight } from '@react-navigation/elements';
 import ModalPicker from '../../components/ModalPicker.js';
 import CustomButton from '../../components/CustomButton.js';
 
+import { GlobalContext } from '../../GlobalContext.js';
+
 export default function FormScreen({ navigation }) {
   let headerHeight = useHeaderHeight();
+
+  const {setUserId} = useContext(GlobalContext);
 
   const Gender = ["Male", "Female"];
   const InterestedGender = ["Male", "Female"];
@@ -37,6 +41,8 @@ export default function FormScreen({ navigation }) {
       // Make POST request to backend
       const response = await axios.post('http://localhost:8000/', newUser); // Replace localhost with your backend URL if needed
       if (response.status === 200) {
+        setUserId(response.data.id);
+        console.log(response.data.id) // Verificando que al pasar el id funciona, y ver por el mongo
         Alert.alert('Success', 'You have been registered!', [
           { text: 'OK', onPress: () => navigation.navigate('Session') },
         ]);

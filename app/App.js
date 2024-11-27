@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { GlobalProvider } from './GlobalContext.js';
 import SessionNavigator from './navigation/SessionNavigator.js';
 import RegistrationNavigator from './navigation/RegistrationNavigator.js';
 import ModalPicker from './components/ModalPicker.js';
@@ -22,7 +22,12 @@ import React, { useState, useContext } from 'react';
 export default function App() {
   const [isRegistered, setIsRegistered] = useState(false);
 
-  return isRegistered ? <SessionNavigator /> : <RegistrationNavigator />;
+  return(
+    <GlobalProvider>
+    <RegistrationNavigator /> 
+    </GlobalProvider>
+
+  )
 }
 
 const styles = StyleSheet.create({
