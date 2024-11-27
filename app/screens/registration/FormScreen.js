@@ -38,7 +38,7 @@ export default function FormScreen({ navigation }) {
       const response = await axios.post('http://localhost:8000/', newUser); // Replace localhost with your backend URL if needed
       if (response.status === 200) {
         Alert.alert('Success', 'You have been registered!', [
-          { text: 'OK', onPress: () => navigation.replace('Home') },
+          { text: 'OK', onPress: () => navigation.navigate('Session') },
         ]);
       }
     } catch (error) {
