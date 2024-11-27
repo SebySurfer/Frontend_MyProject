@@ -5,7 +5,9 @@ import SessionNavigator from './navigation/SessionNavigator.js';
 import RegistrationNavigator from './navigation/RegistrationNavigator.js';
 import ModalPicker from './components/ModalPicker.js';
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+
 
 /*
 <ModalPicker
@@ -24,7 +26,7 @@ export default function App() {
 
     if(registered){
       return (
-        <RegistrationNavigator/>
+        <SessionNavigator/>
       );
 
     } else {
