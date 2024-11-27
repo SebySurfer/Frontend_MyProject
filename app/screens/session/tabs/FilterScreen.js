@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
       
   },
   CustomButton: {
-    marginBottom: 20, // Add margin below the button
+    marginBottom: 20, 
   },
 
 })

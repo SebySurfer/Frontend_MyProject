@@ -20,26 +20,9 @@ import React, { useState, useContext } from 'react';
 
 
 export default function App() {
-    const [registered, setRegistered] = useState(false);
-    const OPTIONS = ['Male', 'Female', "X", "Y", "T", "q", "3", "5", "8", "0", "ed", "2"]
+  const [isRegistered, setIsRegistered] = useState(false);
 
-
-    if(registered){
-      return (
-        <SessionNavigator/>
-      );
-
-    } else {
-      return (
-        <SessionNavigator/>
-        
-        
-        
-      );
-      
-    }
-
-  
+  return isRegistered ? <SessionNavigator /> : <RegistrationNavigator />;
 }
 
 const styles = StyleSheet.create({
