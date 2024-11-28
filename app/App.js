@@ -1,11 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-
+import { GlobalProvider } from './GlobalContext.js';
 import SessionNavigator from './navigation/SessionNavigator.js';
 import RegistrationNavigator from './navigation/RegistrationNavigator.js';
 import ModalPicker from './components/ModalPicker.js';
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+
+
 
 /*
 <ModalPicker
@@ -18,26 +20,14 @@ import React, { useState } from 'react';
 
 
 export default function App() {
-    const [registered, setRegistered] = useState(false);
-    const OPTIONS = ['Male', 'Female', "X", "Y", "T", "q", "3", "5", "8", "0", "ed", "2"]
+  const [isRegistered, setIsRegistered] = useState(false);
 
+  return(
+    <GlobalProvider>
+    <RegistrationNavigator /> 
+    </GlobalProvider>
 
-    if(registered){
-      return (
-        <RegistrationNavigator/>
-      );
-
-    } else {
-      return (
-        <SessionNavigator/>
-        
-        
-        
-      );
-      
-    }
-
-  
+  )
 }
 
 const styles = StyleSheet.create({

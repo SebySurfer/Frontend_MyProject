@@ -3,7 +3,7 @@ import React from 'react'
 import ColorList from '../../../components/ColorList.js'
 import {useHeaderHeight} from '@react-navigation/elements'
 import ModalPicker from '../../../components/ModalPicker.js'
-
+import CustomButton from '../../../components/CustomButton.js'
 
 export default function FilterScreen() {
   let Questions = ["Too often", "I do", "In between", "Not too much", "Not at all"]
@@ -16,7 +16,11 @@ source={require('../../../assets/backgrounds/1.jpeg')}
 style={styles.ImageStyle} >
 
     <ScrollView  contentContainerStyle={[styles.Container, {paddingTop: headerHeight+10}]}>
-     
+    <CustomButton
+        title="Update"
+        onPress={() => console.log('Update pressed')} // Replace with your desired functionality
+        style={styles.CustomButton}
+      />
      <View style={[styles.Boxes, {backgroundColor:"#552bc2"}]}>
       <Text style={styles.Title}>Core Values</Text>
       <ModalPicker title="Drink" options={Questions} titleColor="white" />
@@ -36,9 +40,12 @@ style={styles.ImageStyle} >
 
     </View>
 
-
+    
 
     </ScrollView>
+
+    
+
     </ImageBackground>
   )
 }
@@ -74,6 +81,9 @@ const styles = StyleSheet.create({
       justifyContent: 'space-around',
       alignItems: 'center'
       
+  },
+  CustomButton: {
+    marginBottom: 20, 
   },
 
 })

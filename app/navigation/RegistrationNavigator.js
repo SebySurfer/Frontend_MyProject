@@ -6,6 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import SignUpScreen from '../screens/registration/SignUpScreen.js';
 import FormScreen from '../screens/registration/FormScreen.js';
+import SessionNavigator from './SessionNavigator.js';
 
 
 const Stack = createStackNavigator();
@@ -32,6 +33,11 @@ export default function RegistrationNavigator() {
 
 
           }}/>
+
+        <Stack.Screen 
+        name='Session' 
+        component={SessionNavigator} 
+        options={{ headerShown: false }}/>
 
       </Stack.Navigator>
     </NavigationContainer>
