@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, ScrollView, ImageBackground, Alert } from 'react-native';
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { useHeaderHeight } from '@react-navigation/elements';
 import ModalPicker from '../../../components/ModalPicker.js';
@@ -13,22 +13,32 @@ export default function FilterScreen() {
 
   let headerHeight = useHeaderHeight();
 
-  // State for filter selections
-  const [filters, setFilters] = useState({
+  // Initial filter state
+  const initialFilters = {
     drink: null,
     smoke: null,
     familyOriented: null,
     religious: null,
     wantKids: null,
     likeOutdoors: null,
-  });
+  };
 
-  // Handler to update the state for a specific filter
+  // State for filter selections
+  const [filters, setFilters] = useState(initialFilters);
+
+  // Track if changes are made
+  const [hasChanged, setHasChanged] = useState(false);
+
+  // Handler to update the state for a specific filter and check for changes
   const updateFilter = (key, value) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [key]: value,
-    }));
+    setFilters((prevFilters) => {
+      const updatedFilters = {
+        ...prevFilters,
+        [key]: value,
+      };
+      setHasChanged(JSON.stringify(updatedFilters) !== JSON.stringify(initialFilters)); // Compare with initial state
+      return updatedFilters;
+    });
   };
 
   const handleUpdateFilters = async () => {
@@ -61,10 +71,12 @@ export default function FilterScreen() {
         Alert.alert('Success', 'Your filters have been updated!', [
           { text: 'OK', onPress: () => console.log('Filters updated successfully') },
         ]);
+        // Update the initial filters to reflect the current state
+        setHasChanged(false);
       }
     } catch (error) {
       console.error(error.response?.data || error.message);
-      Alert.alert('Error', 'Failed to update filters. Please try again.');
+      Alert.alert('Error', 'Failed to update filters,, may be do to no changes being made.');
     }
   };
 
@@ -77,54 +89,58 @@ export default function FilterScreen() {
         <CustomButton
           title="Update"
           onPress={handleUpdateFilters}
-          style={styles.CustomButton}
+          style={[styles.CustomButton, !hasChanged && styles.DisabledButton]}
+          disabled={!hasChanged} // Disable button if no changes
         />
 
         <View style={[styles.Boxes, { backgroundColor: "#552bc2" }]}>
           <Text style={styles.Title}>Core Values</Text>
           <ModalPicker
-    title="Drink"
-    options={Questions}
-    titleColor="white"
-    defaultValue={filters.drink}
-    onSelect={(value) => updateFilter('drink', value)}
-/>
-<ModalPicker
-    title="Smoke"
-    options={Questions}
-    titleColor="white"
-    defaultValue={filters.smoke}
-    onSelect={(value) => updateFilter('smoke', value)}
-/>
-<ModalPicker
-    title="Family-Oriented"
-    options={Questions}
-    titleColor="white"
-    defaultValue={filters.familyOriented}
-    onSelect={(value) => updateFilter('familyOriented', value)}
-/>
-<ModalPicker
-    title="Religious"
-    options={Questions}
-    titleColor="white"
-    defaultValue={filters.religious}
-    onSelect={(value) => updateFilter('religious', value)}
-/>
-<ModalPicker
-    title="Want kids"
-    options={BooleanQ}
-    titleColor="white"
-    defaultValue={filters.wantKids}
-    onSelect={(value) => updateFilter('wantKids', value)}
-/>
-<ModalPicker
-    title="Like outdoors"
-    options={BooleanQ}
-    titleColor="white"
-    defaultValue={filters.likeOutdoors}
-    onSelect={(value) => updateFilter('likeOutdoors', value)}
-/>
+            title="Drink"
+            options={Questions}
+            titleColor="white"
+            defaultValue={filters.drink}
+            onSelect={(value) => updateFilter('drink', value)}
+          />
+          <ModalPicker
+            title="Smoke"
+            options={Questions}
+            titleColor="white"
+            defaultValue={filters.smoke}
+            onSelect={(value) => updateFilter('smoke', value)}
+          />
+          <ModalPicker
+            title="Family-Oriented"
+            options={Questions}
+            titleColor="white"
+            defaultValue={filters.familyOriented}
+            onSelect={(value) => updateFilter('familyOriented', value)}
+          />
+          <ModalPicker
+            title="Religious"
+            options={Questions}
+            titleColor="white"
+            defaultValue={filters.religious}
+            onSelect={(value) => updateFilter('religious', value)}
+          />
+        </View>
 
+        <View style={[styles.Boxes, { backgroundColor: "#a998d6" }]}>
+          <Text style={styles.Title}>Ways of Thinking</Text>
+          <ModalPicker
+            title="Want kids"
+            options={BooleanQ}
+            titleColor="white"
+            defaultValue={filters.wantKids}
+            onSelect={(value) => updateFilter('wantKids', value)}
+          />
+          <ModalPicker
+            title="Like outdoors"
+            options={BooleanQ}
+            titleColor="white"
+            defaultValue={filters.likeOutdoors}
+            onSelect={(value) => updateFilter('likeOutdoors', value)}
+          />
         </View>
       </ScrollView>
     </ImageBackground>
@@ -159,5 +175,8 @@ const styles = StyleSheet.create({
   },
   CustomButton: {
     marginBottom: 20,
+  },
+  DisabledButton: {
+    backgroundColor: 'gray', // Change the button's appearance when disabled
   },
 });
