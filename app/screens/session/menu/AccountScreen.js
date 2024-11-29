@@ -11,14 +11,14 @@ export default function AccountScreen({ navigation }) {
 
   const handleDeleteAccount = async () => {
     try {
-      const response = await axios.delete(`http://localhost:8000/${userId}`); // Replace localhost with your backend URL
+      const response = await axios.delete(`http://localhost:8000/${userId}`); 
       if (response.status === 200) {
         Alert.alert('Account Deleted', 'Your account has been deleted.', [
           {
             text: 'OK',
             onPress: () => {
-              setUserId(null); // Clear userId in context
-              navigation.navigate('Sign Up'); // Navigate to login screen
+              setUserId(null); 
+              navigation.navigate('Sign Up'); 
             },
           },
         ]);
