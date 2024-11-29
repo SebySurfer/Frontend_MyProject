@@ -1,10 +1,15 @@
 import { StyleSheet, Text, View, Button, ImageBackground } from 'react-native'
-import React from 'react'
+import React,{useContext} from 'react'
 import {useHeaderHeight} from '@react-navigation/elements'
 import CustomButton from '../../../components/CustomButton';
 
+import { GlobalContext } from '../../../GlobalContext.js';
+
 
 export default function AccountScreen({navigation}) {
+  const {userId} = useContext(GlobalContext);
+
+
 
   let headerHeight = useHeaderHeight();
   return (
@@ -15,6 +20,7 @@ export default function AccountScreen({navigation}) {
       <View style={[styles.Container, {paddingTop: headerHeight+10}]}>
         <CustomButton
           title="Delete Account" 
+          onPress = {() => console.log(userId)}
 
         />
 
