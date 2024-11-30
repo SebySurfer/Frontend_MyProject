@@ -16,7 +16,6 @@ export default function FormScreen({ navigation }) {
   const Gender = ["Male", "Female"];
   const InterestedGender = ["Male", "Female"];
 
-  // State to store form inputs
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [gender, setGender] = useState('');
@@ -25,7 +24,6 @@ export default function FormScreen({ navigation }) {
   const [instagram, setInstagram] = useState('');
 
   const handleSignUp = async () => {
-    // Create user object based on form input
     const newUser = {
       firstName,
       lastName,
@@ -38,8 +36,7 @@ export default function FormScreen({ navigation }) {
     };
 
     try {
-      // Make POST request to backend
-      const response = await axios.post('http://localhost:8000/', newUser); // Replace localhost with your backend URL if needed
+      const response = await axios.post('http://localhost:8000/', newUser); 
       if (response.status === 200) {
         setUserId(response.data.id);
         console.log(response.data.id) // Verificando que al pasar el id funciona, y ver por el mongo
