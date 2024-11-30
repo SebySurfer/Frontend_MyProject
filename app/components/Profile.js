@@ -30,7 +30,7 @@ export default function Profile(props) {
 
     <View style={styles.Box}>
 
-        <Text style={styles.User}>{props.Name}, {props.Age}</Text>
+        <Text style={styles.User}>{props.Name} {props.Age}</Text>
         <Text style={styles.Match}>{props.MatchRate}% Match </Text>
         <DisplayButton state={props.isMutual}/>
 
