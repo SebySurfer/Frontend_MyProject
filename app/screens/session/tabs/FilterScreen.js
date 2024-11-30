@@ -7,13 +7,12 @@ import CustomButton from '../../../components/CustomButton.js';
 import { GlobalContext } from '../../../GlobalContext.js';
 
 export default function FilterScreen() {
-  const { userId } = useContext(GlobalContext); // Get userId from context
+  const { userId } = useContext(GlobalContext); // userId from context
   const Questions = ["Too often", "I do", "In between", "Not too much", "Not at all"];
   const BooleanQ = ["Yes", "No"];
 
   let headerHeight = useHeaderHeight();
 
-  // Initial filter state
   const initialFilters = {
     drink: null,
     smoke: null,
@@ -23,34 +22,29 @@ export default function FilterScreen() {
     likeOutdoors: null,
   };
 
-  // State for filter selections
   const [filters, setFilters] = useState(initialFilters);
 
-  // Track if changes are made
   const [hasChanged, setHasChanged] = useState(false);
 
-  // Handler to update the state for a specific filter and check for changes
   const updateFilter = (key, value) => {
     setFilters((prevFilters) => {
       const updatedFilters = {
         ...prevFilters,
         [key]: value,
       };
-      setHasChanged(JSON.stringify(updatedFilters) !== JSON.stringify(initialFilters)); // Compare with initial state
+      setHasChanged(JSON.stringify(updatedFilters) !== JSON.stringify(initialFilters)); 
       return updatedFilters;
     });
   };
 
   const handleUpdateFilters = async () => {
     try {
-      // Check if any filter is null or not selected
       const invalidFilters = Object.values(filters).some((value) => value === null || value === '');
       if (invalidFilters) {
         Alert.alert('Error', 'Please select all filter options before updating.');
         return;
       }
 
-      // Build the payload in the required format
       const formattedFilters = {
         questions: [
           filters.drink,
@@ -62,21 +56,19 @@ export default function FilterScreen() {
         ],
       };
 
-      console.log("Payload being sent:", formattedFilters); // Debug the payload
+      console.log("Payload being sent:", formattedFilters); 
 
-      // Make the PUT request
-      const response = await axios.put(`http://localhost:8000/${userId}`, formattedFilters); // Replace localhost with your backend URL
+      const response = await axios.put(`http://localhost:8000/${userId}`, formattedFilters); 
 
       if (response.status === 200) {
         Alert.alert('Success', 'Your filters have been updated!', [
           { text: 'OK', onPress: () => console.log('Filters updated successfully') },
         ]);
-        // Update the initial filters to reflect the current state
         setHasChanged(false);
       }
     } catch (error) {
       console.error(error.response?.data || error.message);
-      Alert.alert('Error', 'Failed to update filters,, may be do to no changes being made.');
+      Alert.alert('Error', 'Failed to update filters, may be do to no changes being made.');
     }
   };
 
@@ -90,7 +82,7 @@ export default function FilterScreen() {
           title="Update"
           onPress={handleUpdateFilters}
           style={[styles.CustomButton, !hasChanged && styles.DisabledButton]}
-          disabled={!hasChanged} // Disable button if no changes
+          disabled={!hasChanged} 
         />
 
         <View style={[styles.Boxes, { backgroundColor: "#552bc2" }]}>
