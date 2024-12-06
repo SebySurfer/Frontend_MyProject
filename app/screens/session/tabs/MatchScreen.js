@@ -19,7 +19,6 @@ export default function MatchScreen() {
         const first10Profiles = allProfiles.slice(0, 10).map((user) => ({
           Name: `${user.firstName} ${user.lastName}`,
           MatchRate: calculateMatchRate(user.questions), // Logic for match rate
-          isMutual: user.is_Registered, // Example logic for mutual match
         }));
 
         setProfiles(first10Profiles);
@@ -51,7 +50,6 @@ export default function MatchScreen() {
             key={index}
             Name={profile.Name}
             MatchRate={profile.MatchRate}
-            isMutual={profile.isMutual}
           />
         ))}
       </ScrollView>
