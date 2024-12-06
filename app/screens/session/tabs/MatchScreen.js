@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import Profile from '../../../components/Profile.js';
 import { useHeaderHeight } from '@react-navigation/elements';
 import axios from 'axios';
+import { GlobalContext } from '../../../GlobalContext.js';
 
 export default function MatchScreen() {
   const headerHeight = useHeaderHeight();
   const [profiles, setProfiles] = useState([]);
-
+  const { userId } = useContext(GlobalContext); // userId from context
+  console.log(userId);
   // Fetch profiles from backend
   useEffect(() => {
     const fetchProfiles = async () => {
