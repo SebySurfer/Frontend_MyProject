@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext} from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import Profile from '../../../components/Profile.js';
 import { useHeaderHeight } from '@react-navigation/elements';
@@ -9,18 +9,25 @@ export default function MatchScreen() {
   const headerHeight = useHeaderHeight();
   const [profiles, setProfiles] = useState([]);
   const { userId } = useContext(GlobalContext); // userId from context
-  console.log(userId);
+  const [userQuestions, setUserQuestions] = useState([]); // Questions of the logged-in user
+
   // Fetch profiles from backend
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
+        // Fetch all profiles
         const response = await axios.get('http://127.0.0.1:8000/'); // Replace with your backend URL
         const allProfiles = response.data; // Assuming response.data is an array of users
+        console.log(allProfiles)
+        // Fetch current user's details to get their questions
+        const userResponse = await axios.get(`http://127.0.0.1:8000/${userId}`);
+        const currentUser = userResponse.data;
+        setUserQuestions(currentUser.questions || []);
 
         // Limit to first 10 users and map required fields
         const first10Profiles = allProfiles.slice(0, 10).map((user) => ({
           Name: `${user.firstName} ${user.lastName}`,
-          MatchRate: calculateMatchRate(user.questions), // Logic for match rate
+          MatchRate: calculateMatchRate(currentUser.questions, user.questions), // Compare questions
         }));
 
         setProfiles(first10Profiles);
@@ -30,12 +37,21 @@ export default function MatchScreen() {
     };
 
     fetchProfiles();
-  }, []);
+  }, [userId]);
 
   // Function to calculate match rate
-  const calculateMatchRate = (questions) => {
-    // Example logic: match rate is the number of answered questions
-    return (questions.length / 10) * 100; // Assuming 10 is the total number of possible questions
+  const calculateMatchRate = (userQuestions, otherQuestions) => {
+    if (!userQuestions || !otherQuestions || userQuestions.length === 0) {
+      return 0;
+    }
+
+    // Compare each question at the same index
+    const matches = userQuestions.reduce((count, question, index) => {
+      return count + (question === otherQuestions[index] ? 1 : 0);
+    }, 0);
+
+    // Calculate percentage match
+    return Math.round((matches / userQuestions.length) * 100);
   };
 
   return (
