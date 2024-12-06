@@ -69,7 +69,7 @@ export default function SessionNavigator() {
     ),
     drawerActiveTintColor: '#8e40de',
     drawerInactiveTintColor: '#183371',
-    headerLeft: () => <CustomDrawerButton />, // Use the custom button
+    headerLeft: () => <CustomDrawerButton />,
 
 
   }}

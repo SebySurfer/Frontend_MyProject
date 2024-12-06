@@ -13,7 +13,7 @@ export default function MatchScreen() {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/'); // Replace with your backend URL
+        const response = await axios.get('http://127.0.0.1:8000/'); 
         const allProfiles = response.data;
         
         const userResponse = await axios.get(`http://127.0.0.1:8000/${userId}`);
@@ -26,7 +26,7 @@ export default function MatchScreen() {
             id: user.id,
             Name: `${user.firstName} ${user.lastName}`,
             MatchRate: calculateMatchRate(currentUser.questions, user.questions),
-            instagram: user.instagram, // Include Instagram handle
+            instagram: user.instagram, 
           }));
 
         setProfiles(filteredProfiles);
@@ -60,7 +60,7 @@ export default function MatchScreen() {
             key={index}
             Name={profile.Name}
             MatchRate={profile.MatchRate}
-            instagram={profile.instagram} // Pass Instagram to Profile
+            instagram={profile.instagram} 
           />
         ))}
       </ScrollView>
