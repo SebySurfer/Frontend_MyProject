@@ -8,21 +8,10 @@ Name="" Age={} MatchRate={} isMutual={}
 */
 export default function Profile(props) {
 
-    const DisplayButton = ({state}) =>{
-        if(!state){
-            return(
-                <CustomButton title="Give Like"/>
-            )
-        } else {
-            return(
-                <>
-                <CustomButton title="Get Instagram"/>
-                <Text style={styles.Notification}>You both liked each other! </Text>
-                </>
-                
-            )
-
-        }
+    const DisplayButton = () =>{
+        return(
+            <CustomButton title="Get Instagram"/>
+        )
 
     }
   return (
@@ -30,9 +19,9 @@ export default function Profile(props) {
 
     <View style={styles.Box}>
 
-        <Text style={styles.User}>{props.Name}, {props.Age}</Text>
+        <Text style={styles.User}>{props.Name} {props.Age}</Text>
         <Text style={styles.Match}>{props.MatchRate}% Match </Text>
-        <DisplayButton state={props.isMutual}/>
+        <DisplayButton />
 
 
 
