@@ -25,12 +25,13 @@ export default function MatchScreen() {
         setUserQuestions(currentUser.questions || []);
 
         // Limit to first 10 users and map required fields
-        const first10Profiles = allProfiles.slice(0, 10).map((user) => ({
+        const filteredProfiles = allProfiles.filter((user) => user.id !== userId).slice(0, 10).map((user) => ({
           Name: `${user.firstName} ${user.lastName}`,
           MatchRate: calculateMatchRate(currentUser.questions, user.questions), // Compare questions
         }));
 
-        setProfiles(first10Profiles);
+
+        setProfiles(filteredProfiles);
       } catch (error) {
         console.error('Error fetching profiles:', error);
       }
