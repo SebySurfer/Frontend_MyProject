@@ -55,7 +55,6 @@ function TabNavigator(){
 
 export default function SessionNavigator() {
   return (
-    <NavigationContainer>
 
 <Drawer.Navigator
   screenOptions={{
@@ -88,7 +87,6 @@ export default function SessionNavigator() {
           }}/>
         </Drawer.Navigator>
 
-    </NavigationContainer>
    
   )
 }

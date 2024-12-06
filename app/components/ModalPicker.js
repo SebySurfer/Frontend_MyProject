@@ -12,42 +12,45 @@ Input default value
     titleColor=""
  */
 
-export default function ModalPicker(props) {
-    const [chooseData, setChooseData] = useState(props.defaultValue || 'Select');
-    const [isModalVisible, setIsModalVisible] = useState(false);
-
-    const changeModalVis = (bool) => {
-        setIsModalVisible(bool);
-    };
-
-    const setData = (option) => {
-        setChooseData(option);
-    };
-
-    const titleColor = props.titleColor || '#000000';
-
-
-    return (
-        <SafeAreaView style={styles.Container}>
-            {/* Title and Picker Component Inline */}
-            <View style={styles.InlineContainer}>
-            <Text style={[styles.TitleText, { color: titleColor }]}>{props.title}</Text>
-            <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
-                    <Text style={styles.Text}> {chooseData} </Text>
-                </TouchableOpacity>
-            </View>
-
-            <Modal
-                transparent={true}
-                animationType="none"
-                visible={isModalVisible}
-                onRequestClose={() => changeModalVis(false)}
-            >
-                <Picker changeModalVis={changeModalVis} setData={setData} options={props.options} />
-            </Modal>
-        </SafeAreaView>
-    );
-}
+    export default function ModalPicker(props) {
+        const [chooseData, setChooseData] = useState(props.defaultValue || 'Select');
+        const [isModalVisible, setIsModalVisible] = useState(false);
+    
+        const changeModalVis = (bool) => {
+            setIsModalVisible(bool);
+        };
+    
+        const setData = (option) => {
+            setChooseData(option);
+            if (props.onSelect) {
+                props.onSelect(option); // Notify parent about the selection
+            }
+        };
+    
+        const titleColor = props.titleColor || '#000000';
+    
+        return (
+            <SafeAreaView style={styles.Container}>
+                {/* Title and Picker Component Inline */}
+                <View style={styles.InlineContainer}>
+                    <Text style={[styles.TitleText, { color: titleColor }]}>{props.title}</Text>
+                    <TouchableOpacity onPress={() => changeModalVis(true)} style={styles.TouchableOpacity}>
+                        <Text style={styles.Text}> {chooseData} </Text>
+                    </TouchableOpacity>
+                </View>
+    
+                <Modal
+                    transparent={true}
+                    animationType="none"
+                    visible={isModalVisible}
+                    onRequestClose={() => changeModalVis(false)}
+                >
+                    <Picker changeModalVis={changeModalVis} setData={setData} options={props.options} />
+                </Modal>
+            </SafeAreaView>
+        );
+    }
+    
 
 // Constants for dimensions
 const WIDTH = Dimensions.get('window').width;
