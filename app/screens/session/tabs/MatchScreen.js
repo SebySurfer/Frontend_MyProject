@@ -8,28 +8,26 @@ import { GlobalContext } from '../../../GlobalContext.js';
 export default function MatchScreen() {
   const headerHeight = useHeaderHeight();
   const [profiles, setProfiles] = useState([]);
-  const { userId } = useContext(GlobalContext); // userId from context
-  const [userQuestions, setUserQuestions] = useState([]); // Questions of the logged-in user
+  const { userId } = useContext(GlobalContext);
 
-  // Fetch profiles from backend
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        // Fetch all profiles
         const response = await axios.get('http://127.0.0.1:8000/'); // Replace with your backend URL
-        const allProfiles = response.data; // Assuming response.data is an array of users
-        console.log(allProfiles)
-        // Fetch current user's details to get their questions
+        const allProfiles = response.data;
+        
         const userResponse = await axios.get(`http://127.0.0.1:8000/${userId}`);
         const currentUser = userResponse.data;
-        setUserQuestions(currentUser.questions || []);
 
-        // Limit to first 10 users and map required fields
-        const filteredProfiles = allProfiles.filter((user) => user.id !== userId).slice(0, 10).map((user) => ({
-          Name: `${user.firstName} ${user.lastName}`,
-          MatchRate: calculateMatchRate(currentUser.questions, user.questions), // Compare questions
-        }));
-
+        const filteredProfiles = allProfiles
+          .filter((user) => user.id !== userId)
+          .slice(0, 10)
+          .map((user) => ({
+            id: user.id,
+            Name: `${user.firstName} ${user.lastName}`,
+            MatchRate: calculateMatchRate(currentUser.questions, user.questions),
+            instagram: user.instagram, // Include Instagram handle
+          }));
 
         setProfiles(filteredProfiles);
       } catch (error) {
@@ -40,18 +38,11 @@ export default function MatchScreen() {
     fetchProfiles();
   }, [userId]);
 
-  // Function to calculate match rate
   const calculateMatchRate = (userQuestions, otherQuestions) => {
-    if (!userQuestions || !otherQuestions || userQuestions.length === 0) {
-      return 0;
-    }
-
-    // Compare each question at the same index
-    const matches = userQuestions.reduce((count, question, index) => {
-      return count + (question === otherQuestions[index] ? 1 : 0);
-    }, 0);
-
-    // Calculate percentage match
+    if (!userQuestions || !otherQuestions || userQuestions.length === 0) return 0;
+    const matches = userQuestions.reduce((count, question, index) => (
+      count + (question === otherQuestions[index] ? 1 : 0)
+    ), 0);
     return Math.round((matches / userQuestions.length) * 100);
   };
 
@@ -69,6 +60,7 @@ export default function MatchScreen() {
             key={index}
             Name={profile.Name}
             MatchRate={profile.MatchRate}
+            instagram={profile.instagram} // Pass Instagram to Profile
           />
         ))}
       </ScrollView>
